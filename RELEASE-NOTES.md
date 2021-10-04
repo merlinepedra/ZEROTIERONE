@@ -1,6 +1,11 @@
 ZeroTier Release Notes
 ======
 
+# 2021-10-04 -- Version 1.6.7
+
+ * Backport fixes to address performance behind broken NAT routers and to
+   prevent the use of ephemeral IPv6 addresses.
+
 # 2021-09-21 -- Version 1.6.6
 
  * Backport COM hash check mitigation against network member impersonation.

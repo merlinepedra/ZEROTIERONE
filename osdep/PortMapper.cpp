@@ -211,8 +211,9 @@ public:
 					memset(&urls,0,sizeof(urls));
 					memset(&data,0,sizeof(data));
 					OSUtils::ztsnprintf(inport,sizeof(inport),"%d",localPort);
+					int foundValidIGD = 0;
 
-					if ((UPNP_GetValidIGD(devlist,&urls,&data,lanaddr,sizeof(lanaddr)))&&(lanaddr[0])) {
+					if ((foundValidIGD = UPNP_GetValidIGD(devlist,&urls,&data,lanaddr,sizeof(lanaddr)))&&(lanaddr[0])) {
 #ifdef ZT_PORTMAPPER_TRACE
                         PM_TRACE("PortMapper: UPnP: my LAN IP address: %s" ZT_EOL_S,lanaddr);
 #endif
@@ -280,6 +281,9 @@ public:
 #ifdef ZT_PORTMAPPER_TRACE
                             PM_TRACE("PortMapper: UPnP: UPNP_GetExternalIPAddress failed, returning to NAT-PMP mode" ZT_EOL_S);
 #endif
+						}
+						if(foundValidIGD) {
+							FreeUPNPUrls(&urls);
 						}
 					} else {
 						mode = 0;

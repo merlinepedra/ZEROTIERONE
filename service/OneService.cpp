@@ -2941,15 +2941,49 @@ public:
 		// Make sure we're not trying to do ZeroTier-over-ZeroTier
 		{
 			Mutex::Lock _l(_nets_m);
+			bool isztzt = false;
 			for(std::map<uint64_t,NetworkState>::const_iterator n(_nets.begin());n!=_nets.end();++n) {
 				if (n->second.tap) {
 					std::vector<InetAddress> ips(n->second.tap->ips());
 					for(std::vector<InetAddress>::const_iterator i(ips.begin());i!=ips.end();++i) {
-						if (i->containsAddress(*(reinterpret_cast<const InetAddress *>(remoteAddr)))) {
+
+						InetAddress remote = *(reinterpret_cast<const InetAddress*>(remoteAddr));
+
+						char buf1[64];
+						char buf2[64];
+						i->toIpString(buf1);
+
+						remote.toIpString(buf2);
+
+						// fprintf(stderr, "    HERE: local: %s remote %s %u \n", buf1, buf2, ztaddr);
+
+						if (i->containsAddress(remote)) {
+							fprintf(stderr, "    HERE2: local: %s remote %s \n", buf1, buf2);
 							return 0;
 						}
 					}
 				}
+
+				// scan for overlap with managed routes
+				NetworkState ns = n->second;
+				InetAddress remote = *(reinterpret_cast<const InetAddress*>(remoteAddr));
+				for(std::map< InetAddress, SharedPtr<ManagedRoute> >::iterator route(ns.managedRoutes.begin());route!=ns.managedRoutes.end();++route) {
+					if (route->second->via()){
+						char buf1[64];
+						char buf2[64];
+						remote.toIpString(buf1);
+						route->second->target().toString(buf2);
+
+						// fprintf(stderr, "  target %s via %s \n", buf2, buf1);
+
+						if (route->second->target().containsAddress(remote)) {
+							fprintf(stderr, "a zt managed target [%s] contains this remote path [%s], so\n", buf2, buf1);
+							isztzt = true;
+							// return 0;
+						}
+					}
+				}
+				if (isztzt) return 0;
 			}
 		}
 

@@ -37,12 +37,12 @@ debian:
 
 redhat:
 	@echo "building rpm package"
-	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba bytey.spec
+	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 
 munge_rpm:
 	@:$(call check_defined, VERSION)
 	@echo "Updating rpm spec to $(VERSION)"
-	ci/scripts/munge_rpm_spec.sh bytey.spec $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
+	ci/scripts/munge_rpm_spec.sh zerotier-one.spec $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
 
 munge_deb:
 	@:$(call check_defined, VERSION)

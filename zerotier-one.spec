@@ -165,16 +165,16 @@ esac
 %endif
 
 %changelog
-* Fri Apr 25 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.9
+* Mon Apr 25 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.9
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
-* Fri Apr 11 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.8
+* Mon Apr 11 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.8
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
-* Fri Mar 21 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.7
+* Mon Mar 21 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.7
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
-* Fri Mar 07 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.6
+* Mon Mar 07 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.6
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
 * Fri Dec 17 2021 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.5
@@ -192,7 +192,7 @@ esac
 * Wed Oct 20 2021 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.1
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
-* Tue Sep 15 2021 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.0
+* Wed Sep 15 2021 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.0
 - see https://github.com/zerotier/ZeroTierOne for release notes
 
 * Tue Apr 13 2021 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.6.5

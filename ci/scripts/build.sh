@@ -41,7 +41,7 @@ echo "PWD: ${PWD}"
 echo "#~~~~~~~~~~~~~~~~~~~~"
 
 if [ ${EVENT} == "push" ]; then
-make munge_rpm bytey.spec VERSION=${VERSION}
+make munge_rpm zerotier-one.spec VERSION=${VERSION}
 make munge_deb debian/changelog VERSION=${VERSION}
 fi
 

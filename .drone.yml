@@ -166,6 +166,102 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
+name: jammy arm64 build
+platform:
+  arch: arm64
+  os: linux
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jammy arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: jammy armv7 build
+platform:
+  arch: arm64
+  os: linux
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jammy armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: jammy riscv64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jammy riscv64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: jammy ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jammy ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: jammy s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jammy s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
 name: focal amd64 build
 pull: always
 steps:
@@ -243,6 +339,42 @@ pull: always
 steps:
 - commands:
   - ./ci/scripts/build.sh bookworm amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bookworm 386 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bookworm 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bookworm mips64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bookworm mips64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 trigger:

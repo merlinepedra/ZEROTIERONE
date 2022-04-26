@@ -8,34 +8,30 @@ URL:            https://www.zerotier.com
 
 # # RHEL build
 
-%if 0%{?el8}
-BuildRequires:  systemd openssl-devel
-%endif
-
-%if 0%{?el7}}
+%if 0%{?rhel} <= 7
 BuildRequires:  systemd openssl11-devel
+%else
+BuildRequires:  systemd openssl-devel
 %endif
 
 # RHEL install
 
-%if 0%{?el8}
+%if 0%{?rhel} <= 7
+Requires: systemd openssl11
+%else
 Requires: systemd openssl
-%endif
-
-%if 0%{?el7}
-Requires:      openssl11 systemd
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
 # Fedora build
 
-%if 0%{?fc34}
+%if 0%{?fedora} >= 34
 BuildRequires:  systemd openssl-devel
 %endif
 
 # Fedora install
 
-%if 0%{?fc34}
+%if 0%{?fedora} >= 34
 Requires:       systemd openssl iproute libstdc++
 AutoReqProv:    no
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent

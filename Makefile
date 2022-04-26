@@ -48,3 +48,5 @@ munge_deb:
 	@:$(call check_defined, VERSION)
 	@echo "Updating debian/changelog to $(VERSION)"
 	ci/scripts/munge_debian_changelog.sh debian/changelog $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
+
+FORCE:

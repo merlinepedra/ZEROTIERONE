@@ -7,7 +7,7 @@ License:        ZeroTier BSL 1.1
 URL:            https://www.zerotier.com
 
 %if 0%{?rhel} >= 7
-BuildRequires:  systemd
+BuildRequires:  systemd openssl
 %endif
 
 %if 0%{?fedora} >= 21

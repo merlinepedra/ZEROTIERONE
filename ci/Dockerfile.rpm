@@ -2,13 +2,7 @@ ARG PLATFORM
 FROM registry.sean.farm/${PLATFORM}-builder as stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
-RUN pwd
-RUN ls -la
-RUN ls -la /root/rpmbuild
 RUN make redhat
-RUN pwd
-RUN ls -la
-RUN ls -la /root/rpmbuild
 
 FROM scratch AS export
 ARG PLATFORM

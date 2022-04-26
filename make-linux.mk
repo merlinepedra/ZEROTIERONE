@@ -458,15 +458,15 @@ debian:	FORCE
 debian-clean: FORCE
 	rm -rf debian/files debian/zerotier-one*.debhelper debian/zerotier-one.substvars debian/*.log debian/zerotier-one debian/.debhelper debian/debhelper-build-stamp
 
-redhat:	FORCE
-	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
+# redhat:	FORCE
+# 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 
-# This installs the packages needed to build ZT locally on CentOS 7 and
-# is here largely for documentation purposes.
-centos-7-setup: FORCE
-	yum install -y gcc gcc-c++ make epel-release git
-	yum install -y centos-release-scl
-	yum install -y devtoolset-8-gcc devtoolset-8-gcc-c++
+# # This installs the packages needed to build ZT locally on CentOS 7 and
+# # is here largely for documentation purposes.
+# centos-7-setup: FORCE
+# 	yum install -y gcc gcc-c++ make epel-release git
+# 	yum install -y centos-release-scl
+# 	yum install -y devtoolset-8-gcc devtoolset-8-gcc-c++
 
 snap-build-local: FORCE
 	snapcraft

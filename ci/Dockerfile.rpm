@@ -2,7 +2,7 @@ ARG PLATFORM
 FROM registry.sean.farm/${PLATFORM}-builder as stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
-RUN dnf -y install openssl
+RUN yum -y install openssl
 RUN make redhat
 
 FROM scratch AS export

@@ -18,7 +18,7 @@ BuildRequires:  systemd openssl-devel
 Requires:       systemd openssl iproute libstdc++
 AutoReqProv:    no
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
-%endi
+%endif
 
 # RHEL build
 

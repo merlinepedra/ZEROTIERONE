@@ -35,7 +35,7 @@ debian:
 	@echo "building deb package"
 	debuild --no-lintian -b -uc -us
 
-redhat:
+redhat: FORCE
 	@echo "building rpm package"
 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 

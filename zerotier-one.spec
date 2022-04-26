@@ -71,34 +71,20 @@ make ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 %endif
 
 %pre
-%if 0%{?rhel} >= 7
 /usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one
-%endif
-%if 0%{?fedora} >= 21
-/usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%if 0%{?rhel} < 7
-pushd %{getenv:PWD}
-%endif
 make install DESTDIR=$RPM_BUILD_ROOT
-%if 0%{?rhel} < 7
-popd
-%endif
-%if 0%{?rhel} >= 7
+
+%if 0%{?rhel} && 0%{?rhel} >= 7
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
 %endif
-%if 0%{?fedora} >= 21
+
+%if 0%{?fedora} && 0%{?fedora} >= 34
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 cp ${getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
-%endif
-%if 0%{?rhel} <= 6
-mkdir -p $RPM_BUILD_ROOT/etc/init.d
-cp %{getenv:PWD}/ext/installfiles/linux/zerotier-one.init.rhel6 $RPM_BUILD_ROOT/etc/init.d/zerotier-one
-chmod 0755 $RPM_BUILD_ROOT/etc/init.d/zerotier-one
 %endif
 
 %files

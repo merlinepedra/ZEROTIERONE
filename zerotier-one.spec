@@ -6,33 +6,39 @@ Summary:        ZeroTier network virtualization service
 License:        ZeroTier BSL 1.1
 URL:            https://www.zerotier.com
 
-%if 0%{?rhel} <= 7
-BuildRequires:  openssl11 systemd
+# Fedora build
+
+%if 0%{?fedora} >= 34
+BuildRequires:  systemd openssl-devel
 %endif
 
-%if 0%{?rhel} > 7
-BuildRequires:  systemd
-%endif
+# Fedora install
 
-%if 0%{?fedora} >= 21
-BuildRequires:  systemd
-%endif
-
-Requires:       iproute libstdc++ openssl
+%if 0%{?fedora} >= 34
+Requires:       systemd openssl iproute libstdc++
 AutoReqProv:    no
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endi
+
+# RHEL build
 
 %if 0%{?rhel} >= 7
-Requires:       systemd
+BuildRequires:  systemd openssl11-devel
+%endif
+
+%if 0%{?rhel} >= 8
+BuildRequires:  systemd openssl-devel
+%endif
+
+# RHEL install
+
+%if 0%{?rhel} >= 7
+Requires:       openssl11 systemd
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
-%if 0%{?rhel} <= 6
-Requires:       chkconfig
-%endif
-
-%if 0%{?fedora} >= 21
-Requires:       systemd
-Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%if 0%{?rhel} >= 8
+Requires: systemd openssl
 %endif
 
 %description

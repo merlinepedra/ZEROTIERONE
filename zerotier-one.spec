@@ -6,8 +6,12 @@ Summary:        ZeroTier network virtualization service
 License:        ZeroTier BSL 1.1
 URL:            https://www.zerotier.com
 
-%if 0%{?rhel} >= 7
-BuildRequires:  systemd openssl
+%if 0%{?rhel} <= 7
+BuildRequires:  openssl11 systemd
+%endif
+
+%if 0%{?rhel} > 7
+BuildRequires:  systemd
 %endif
 
 %if 0%{?fedora} >= 21

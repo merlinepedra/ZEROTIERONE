@@ -41,6 +41,7 @@ Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 Requires: systemd openssl
 %endif
 
+
 %description
 ZeroTier is a software defined networking layer for Earth.
 

@@ -54,7 +54,7 @@ like conventional VPNs or VLANs. It can run on native systems, VMs, or
 containers (Docker, OpenVZ, etc.).
 
 %prep
-%if 0%{?rhel} >= 7
+%if 0%{?rhel} && 0%{?rhel} >= 7
 rm -rf *
 ln -s %{getenv:PWD} %{name}-%{version}
 tar --exclude=%{name}-%{version}/.git --exclude=%{name}-%{version}/%{name}-%{version} -czf %{_sourcedir}/%{name}-%{version}.tar.gz %{name}-%{version}/*

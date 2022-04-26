@@ -48,6 +48,8 @@ fi
 export DOCKER_BUILDKIT=1
 docker run --privileged --rm tonistiigi/binfmt --install all
 
+docker pull --platform linux/${ARCH} registry.sean.farm/${PLATFORM}-builder
+
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \
        --platform linux/${ARCH} \

@@ -13,7 +13,7 @@ BuildRequires:  systemd openssl11-devel
 %endif
 
 %if 0%{?rhel} && 0%{?rhel} >= 8
-BuildRequires:  systemd openssl-devel
+BuildRequires:  systemd openssl-libs
 %endif
 
 # RHEL install
@@ -30,7 +30,7 @@ Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 # Fedora build
 
 %if 0%{?fedora} && 0%{?fedora} >= 34
-BuildRequires:  systemd openssl-devel
+BuildRequires:  systemd openssl-libs
 %endif
 
 # Fedora install

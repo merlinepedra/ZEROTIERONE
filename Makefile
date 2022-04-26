@@ -35,7 +35,7 @@ debian:
 	@echo "building deb package"
 	debuild --no-lintian -b -uc -us
 
-redhat: FORCE
+redhat:
 	@echo "building rpm package"
 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 
@@ -48,5 +48,3 @@ munge_deb:
 	@:$(call check_defined, VERSION)
 	@echo "Updating debian/changelog to $(VERSION)"
 	ci/scripts/munge_debian_changelog.sh debian/changelog $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
-
-FORCE:

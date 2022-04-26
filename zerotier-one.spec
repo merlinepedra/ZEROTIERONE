@@ -22,7 +22,7 @@ Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 
 # RHEL build
 
-%if 0%{?rhel} >= 7
+%if 0%{?rhel} <= 7
 BuildRequires:  systemd openssl11-devel
 %endif
 
@@ -32,7 +32,7 @@ BuildRequires:  systemd openssl-devel
 
 # RHEL install
 
-%if 0%{?rhel} >= 7
+%if 0%{?rhel} <= 7
 Requires:       openssl11 systemd
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif

@@ -85,7 +85,6 @@ cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.
 
 %post
 %systemd_post zerotier-one.service
-%endif
 
 %preun
 %systemd_preun zerotier-one.service

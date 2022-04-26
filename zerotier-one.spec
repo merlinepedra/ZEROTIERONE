@@ -63,10 +63,7 @@ containers (Docker, OpenVZ, etc.).
 # %endif
 
 %build
-#%if 0%{?rhel} <= 7
-#make CFLAGS="`echo %{optflags} | sed s/stack-protector-strong/stack-protector/`" CXXFLAGS="`echo %{optflags} | sed s/stack-protector-strong/stack-protector/`" ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one manpages selftest
-#%else
-%if 0%{?rhel} >= 7
+%if 0%{?rhel} && 0%{?rhel} >= 7
 make ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 %endif
 
@@ -77,88 +74,24 @@ make ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-%if 0%{?rhel} && 0%{?rhel} >= 7
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
-%endif
-
-%if 0%{?fedora} && 0%{?fedora} >= 34
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
-cp ${getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
-%endif
 
 %files
 %{_sbindir}/*
 %{_mandir}/*
 %{_localstatedir}/*
-%if 0%{?rhel} >= 7
 %{_unitdir}/%{name}.service
-%endif
-%if 0%{?fedora} >= 21
-%{_unitdir}/%{name}.service
-%endif
-%if 0%{?rhel} <= 6
-/etc/init.d/zerotier-one
-%endif
 
 %post
-%if 0%{?rhel} >= 7
 %systemd_post zerotier-one.service
-%endif
-%if 0%{?fedora} >= 21
-%systemd_post zerotier-one.service
-%endif
-%if 0%{?rhel} <= 6
-case "$1" in
-  1)
-    chkconfig --add zerotier-one
-  ;;
-  2)
-    chkconfig --del zerotier-one
-    chkconfig --add zerotier-one
-  ;;
-esac
-if [ -x /usr/bin/checkmodule -a -x /usr/bin/semodule_package -a -x /usr/sbin/semodule ]; then
-  rm -f /var/lib/zerotier-one/zerotier-one.mod
-  /usr/bin/checkmodule -M -m -o /var/lib/zerotier-one/zerotier-one.mod /var/lib/zerotier-one/zerotier-one.te
-  if [ -f /var/lib/zerotier-one/zerotier-one.pp ]; then
-    rm -f /var/lib/zerotier-one/zerotier-one.pp
-    /usr/bin/semodule_package -o /var/lib/zerotier-one/zerotier-one.pp -m /var/lib/zerotier-one/zerotier-one.mod
-    /usr/sbin/semodule -u /var/lib/zerotier-one/zerotier-one.pp
-  else
-    /usr/bin/semodule_package -o /var/lib/zerotier-one/zerotier-one.pp -m /var/lib/zerotier-one/zerotier-one.mod
-    /usr/sbin/semodule -i /var/lib/zerotier-one/zerotier-one.pp
-  fi
-fi
 %endif
 
 %preun
-%if 0%{?rhel} >= 7
 %systemd_preun zerotier-one.service
-%endif
-%if 0%{?fedora} >= 21
-%systemd_preun zerotier-one.service
-%endif
-%if 0%{?rhel} <= 6
-case "$1" in
-  0)
-    service zerotier-one stop
-    chkconfig --del zerotier-one
-  ;;
-  1)
-    # This is an upgrade.
-    :
-  ;;
-esac
-%endif
 
 %postun
-%if 0%{?rhel} >= 7
 %systemd_postun_with_restart zerotier-one.service
-%endif
-%if 0%{?fedora} >= 21
-%systemd_postun_with_restart zerotier-one.service
-%endif
 
 %changelog
 * Mon Apr 25 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.9

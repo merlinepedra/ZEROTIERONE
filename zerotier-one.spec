@@ -13,7 +13,7 @@ BuildRequires:  systemd openssl11-devel
 %endif
 
 %if 0%{?rhel} && 0%{?rhel} >= 8
-BuildRequires:  systemd openssl-libs
+BuildRequires:  systemd openssl-devel
 %endif
 
 # RHEL install
@@ -29,13 +29,13 @@ Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 
 # Fedora build
 
-%if 0%{?fedora} && 0%{?fedora} >= 34
-BuildRequires:  systemd openssl-libs
+%if 0%{?fedora} && 0%{?fedora} >= 35
+BuildRequires:  systemd openssl-devel
 %endif
 
 # Fedora install
 
-%if 0%{?fedora} && 0%{?fedora} >= 34
+%if 0%{?fedora} && 0%{?fedora} >= 35
 Requires:       systemd openssl iproute libstdc++
 AutoReqProv:    no
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent

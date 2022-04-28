@@ -3,7 +3,7 @@ RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make p
 RUN yum -y install clang openssl1.1 openssl1.1-devel
 RUN yum -y install systemd
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
-RUN /root/.cargo/bin/rustup install rustup install 1.60.0
+RUN /root/.cargo/bin/rustup install 1.60.0
 
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD

@@ -30,6 +30,12 @@ case $ISA in
         ;;
 esac
 
+if [ -f "ci/Dockerfile.${PLATFORM}" ]; then
+    export DOCKERFILE="ci/Dockerfile.${PLATFORM}"
+else
+    export DOCKERFILE="ci/Dockerfile.${PKGFMT}"
+fi
+
 echo "#~~~~~~~~~~~~~~~~~~~~"
 echo "$0 variables:"
 echo "nproc: $(nproc)"
@@ -38,6 +44,7 @@ echo "VERSION: ${VERSION}"
 echo "EVENT: ${EVENT}"
 echo "PKGFMT: ${PKGFMT}"
 echo "PWD: ${PWD}"
+echo "DOCKERFILE: ${DOCKERFILE}"
 echo "#~~~~~~~~~~~~~~~~~~~~"
 
 if [ ${EVENT} == "push" ]; then
@@ -53,7 +60,7 @@ docker pull --platform linux/${ARCH} registry.sean.farm/${PLATFORM}-builder
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \
        --platform linux/${ARCH} \
-       -f ci/Dockerfile.${PKGFMT} \
+       -f ${DOCKERFILE} \
        --target export \
        -t build \
        . \

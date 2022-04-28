@@ -1,0 +1,17 @@
+FROM fedora:37
+RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
+RUN yum -y install clang openssl-libs openssl-devel
+RUN yum -y install systemd
+RUN yum -y install cargo rust-openssl-devel rust-tokio-openssl-devel
+# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
+# RUN /root/.cargo/bin/rustup install rustup install 1.60.0
+
+ARG PLATFORM
+WORKDIR /root/rpmbuild/BUILD
+COPY . .
+RUN rpm -qa | grep openssl
+RUN make redhat
+
+FROM scratch AS export
+ARG PLATFORM
+COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

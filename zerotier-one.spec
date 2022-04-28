@@ -8,7 +8,7 @@ URL:            https://www.zerotier.com
 
 # RHEL build
 
-%{echo: ?dist}
+%{echo: %{?dist}}
 
 %if 0%{?rhel} && 0%{?rhel} == 7
 BuildRequires:  systemd openssl11-devel

@@ -20,21 +20,21 @@ URL:            https://www.zerotier.com
 %{echo: %{?fedora}}
 %{echo: --- fedora --- }
 
-%if 0%{?rhel} && 0%{?rhel} == 7
+%if %{?dist} == .el7
 BuildRequires:  systemd openssl11-devel
 %endif
 
+%if %{?dist} == .el7
+Requires:      openssl11 systemd
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
 %if 0%{?rhel} && 0%{?rhel} >= 8
-BuildRequires:  systemd openssl-devel
+BuildRequires: systemd openssl-devel
 %endif
 
 %if 0%{?rhel} && 0%{?rhel} >= 8
 Requires: systemd openssl
-%endif
-
-%if 0%{?rhel} && 0%{?rhel} <= 7
-Requires:      openssl11 systemd
-Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
 # Fedora

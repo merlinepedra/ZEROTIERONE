@@ -66,9 +66,7 @@ ls -la
 # %endif
 
 %build
-%if 0%{?rhel} && 0%{?rhel} >= 7
 make ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
-%endif
 
 %pre
 /usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one

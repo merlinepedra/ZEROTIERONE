@@ -455,18 +455,23 @@ uninstall:	FORCE
 # debian:	FORCE
 # 	debuild --no-lintian -I -i -us -uc -nc -b
 
+debian: FORCE
+	@echo "building deb package"
+	debuild --no-lintian -b -uc -us
+
 debian-clean: FORCE
 	-rm -rf debian/files debian/zerotier-one*.debhelper debian/zerotier-one.substvars debian/*.log debian/zerotier-one debian/.debhelper debian/debhelper-build-stamp
 
-# redhat:	FORCE
-# 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
+redhat:	FORCE
+	@echo "building rpm package"
+	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 
-# # This installs the packages needed to build ZT locally on CentOS 7 and
-# # is here largely for documentation purposes.
-# centos-7-setup: FORCE
-# 	yum install -y gcc gcc-c++ make epel-release git
-# 	yum install -y centos-release-scl
-# 	yum install -y devtoolset-8-gcc devtoolset-8-gcc-c++
+# This installs the packages needed to build ZT locally on CentOS 7 and
+# is here largely for documentation purposes.
+centos-7-setup: FORCE
+	yum install -y gcc gcc-c++ make epel-release git
+	yum install -y centos-release-scl
+	yum install -y devtoolset-8-gcc devtoolset-8-gcc-c++
 
 snap-build-local: FORCE
 	snapcraft
@@ -495,5 +500,15 @@ synology-pkg: FORCE
 
 synology-docker: FORCE
 	cd synology/dsm7-docker/; ./build.sh build
+
+munge_rpm:
+	@:$(call check_defined, VERSION)
+	@echo "Updating rpm spec to $(VERSION)"
+	ci/scripts/munge_rpm_spec.sh zerotier-one.spec $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
+
+munge_deb:
+	@:$(call check_defined, VERSION)
+	@echo "Updating debian/changelog to $(VERSION)"
+	ci/scripts/munge_debian_changelog.sh debian/changelog $(VERSION) "Sean OMeara <sean@sean.io>" "blah blah"
 
 FORCE:

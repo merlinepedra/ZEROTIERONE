@@ -9,7 +9,6 @@ RUN /root/.cargo/bin/rustup install 1.60.0
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
-RUN rpm -qa | grep openssl
 RUN make redhat
 
 FROM stage AS export

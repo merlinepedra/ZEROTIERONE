@@ -70,7 +70,7 @@ ls -la
 # %endif
 
 %build
-make ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
+make RUST_BACKTRACE=1 ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 
 %pre
 /usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one

@@ -1,7 +1,8 @@
-FROM amazonlinux:2 as stage
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+FROM registry.access.redhat.com/ubi8/ubi as stage
+RUN yum -y update
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
-RUN yum -y install clang openssl openssl-devel
+RUN yum -y install clang openssl-libs openssl-devel
+RUN yum -y install systemd
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 RUN /root/.cargo/bin/rustup install 1.60.0
 

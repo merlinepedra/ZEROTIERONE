@@ -2,7 +2,7 @@ FROM amazonlinux:2 as stage
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN yum -y install cargo
-RUN yum -y install clang openssl openssl11-devel
+RUN yum -y install clang openssl openssl-devel
 
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD

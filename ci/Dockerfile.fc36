@@ -2,10 +2,8 @@ FROM fedora:36 as stage
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN yum -y install clang openssl1.1 openssl1.1-devel
 RUN yum -y install systemd
-RUN yum -y install cargo
-# RUN yum -y install cargo rust-openssl-devel rust-tokio-openssl-devel
-# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
-# RUN /root/.cargo/bin/rustup install rustup install 1.60.0
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+RUN /root/.cargo/bin/rustup install rustup install 1.60.0
 
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD

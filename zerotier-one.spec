@@ -6,56 +6,51 @@ Summary:        ZeroTier network virtualization service
 License:        ZeroTier BSL 1.1
 URL:            https://www.zerotier.com
 
-# RHEL build
-
-%{echo: --- dist --- }
-%{echo: %{?dist}}
-%{echo: --- dist --- }
-
-%{echo: --- rhel --- }
-%{echo: %{?rhel}}
-%{echo: --- rhel --- }
-
-%{echo: --- fedora --- }
-%{echo: %{?fedora}}
-%{echo: --- fedora --- }
-
-%if "%{?dist}" == ".el7"
-BuildRequires:  systemd openssl11-devel
-%endif
-
-%if "%{?dist}" == ".el7"
-Requires:      openssl11 systemd
-Requires(pre): /usr/sbin/useradd, /usr/bin/getent
-%endif
-
-%if 0%{?rhel} && 0%{?rhel} >= 8
-BuildRequires: systemd openssl-devel
-%endif
-
-%if 0%{?rhel} && 0%{?rhel} >= 8
-Requires: systemd openssl
-%endif
-
 # Fedora
 
-%if 0%{?fedora} && 0%{?fedora} >= 36
-BuildRequires:  systemd openssl1.1 openssl1.1-devel
-%endif
-
-%if 0%{?fedora} && 0%{?fedora} >= 36
-Requires:       systemd openssl1.1 iproute libstdc++
-AutoReqProv:    no
+%if "%{?dist}" == ".fc35"
+BuildRequires: systemd openssl-devel
+Requires:      systemd openssl
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
-%if 0%{?fedora} && 0%{?fedora} == 35
-BuildRequires:  systemd openssl-devel
+%if "%{?dist}" == ".fc36"
+BuildRequires: systemd openssl1.1 openssl1.1-devel
+Requires:      systemd openssl1.1
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
-%if 0%{?fedora} && 0%{?fedora} == 35
-Requires:       systemd openssl iproute libstdc++
-AutoReqProv:    no
+%if "%{?dist}" == ".fc37"
+BuildRequires: systemd openssl1.1 openssl1.1-devel
+Requires:      systemd openssl1.1
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
+# RHEL
+
+%if "%{?dist}" == ".el7"
+BuildRequires: systemd openssl11-devel
+Requires:      systemd openssl11
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
+%if "%{?dist}" == ".el8"
+BuildRequires: systemd openssl-devel
+Requires:      systemd openssl
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
+%if "%{?dist}" == ".el9"
+BuildRequires: systemd openssl-devel
+Requires:      systemd openssl
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
+# Amazon
+
+%if "%{?dist}" == ".amzn2"
+BuildRequires:  systemd openssl-devel
+Requires:       systemd openssl
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 

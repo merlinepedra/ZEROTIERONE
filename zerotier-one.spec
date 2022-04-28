@@ -20,11 +20,11 @@ URL:            https://www.zerotier.com
 %{echo: %{?fedora}}
 %{echo: --- fedora --- }
 
-%if %{?dist} == .el7
+%if %{?dist == .el7}
 BuildRequires:  systemd openssl11-devel
 %endif
 
-%if %{?dist} == .el7
+%if %{?dist == .el7}
 Requires:      openssl11 systemd
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif

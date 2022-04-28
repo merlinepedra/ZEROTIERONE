@@ -1,6 +1,6 @@
 FROM fedora:37 as stage
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
-RUN yum -y install clang openssl1.1 openssl-devel1.1
+RUN yum -y install clang openssl1.1 openssl1.1-devel
 RUN yum -y install systemd
 RUN yum -y install cargo rust-openssl-devel rust-tokio-openssl-devel
 # RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y

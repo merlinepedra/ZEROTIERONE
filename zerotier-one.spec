@@ -56,6 +56,7 @@ like conventional VPNs or VLANs. It can run on native systems, VMs, or
 containers (Docker, OpenVZ, etc.).
 
 %prep
+ls -la
 # %if 0%{?rhel} && 0%{?rhel} >= 7
 # rm -rf *
 # ln -s %{getenv:PWD} %{name}-%{version}

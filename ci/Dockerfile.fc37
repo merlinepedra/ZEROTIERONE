@@ -1,4 +1,4 @@
-FROM fedora:37 as scratch
+FROM fedora:37 as stage
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN yum -y install clang openssl-libs openssl-devel
 RUN yum -y install systemd
@@ -12,6 +12,6 @@ COPY . .
 RUN rpm -qa | grep openssl
 RUN make redhat
 
-FROM scratch AS export
+FROM stage AS export
 ARG PLATFORM
 COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

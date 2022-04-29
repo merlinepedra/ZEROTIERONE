@@ -238,3 +238,201 @@ trigger:
   - push
   - tag
 type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: focal amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh focal amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bionic amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bionic amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: xenial amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh xenial amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: trusty amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh trusty amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bookworm amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bookworm amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bookworm 386 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bookworm 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bookworm mips64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bookworm mips64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: bullseye amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh bullseye amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: buster amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh buster amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: stretch amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh stretch amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: jessie amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh jessie amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+trigger:
+  event:
+  - push
+  - tag
+type: docker

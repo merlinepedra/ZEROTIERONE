@@ -7,7 +7,7 @@ local targets = [
       { "os": "linux", "name": "fc36", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "fc35", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "amzn2", "isas": [ "amd64" ], "events": ["push", "tag" ] },
-      // { "os": "linux", "name": "jammy", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "jammy", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "focal", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "bionic", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "xenial", "isas": [ "amd64" ], "events": ["push", "tag" ] },

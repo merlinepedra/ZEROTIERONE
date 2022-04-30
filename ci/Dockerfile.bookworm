@@ -7,6 +7,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential fakeroot d
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install zlib1g
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 RUN /root/.cargo/bin/rustup install 1.60.0
+RUN rust --version
+RUN cargo --version
 
 WORKDIR /work/build
 COPY . .

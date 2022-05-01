@@ -54,11 +54,11 @@ local Build(platform, os, isa, events) = {
       "image": "registry.sean.farm/honda-builder",
       "commands": [ "./ci/scripts/build.sh " + platform + " " + isa + " " + "100.0.0+${DRONE_COMMIT_SHA:0:8}" + " " + "${DRONE_BUILD_EVENT}" ]
     },
-    // {
-    //   "name": "list",
-    //   "image": "registry.sean.farm/honda-builder",
-    //   "commands": [ "ls -laR *" ]
-    // },
+    {
+      "name": "list",
+      "image": "registry.sean.farm/honda-builder",
+      "commands": [ "ls -laR *" ]
+    },
     // {
     //   "name": "sign",
     //   "image": "registry.sean.farm/honda-builder",

@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 export PLATFORM=$1
-export ISA=$2
+export ZT_ISA=$2
 export VERSION=$3
 export EVENT=$4
 
@@ -32,19 +32,34 @@ esac
 # armv7-unknown-linux-gnueabihf
 # 
 
-case $ISA in
-    armv5)
-        export DOCKER_ARCH=arm/v5
-        export LLVM_ARCH=arm
+case $ZT_ISA in
+    386)
+        export DOCKER_ARCH=386
+        export RUST_TRIPLET=i686-unknown-linux-gnu
+        ;;
+    amd64)
+        export DOCKER_ARCH=amd64
+        export RUST_TRIPLET=x86_64-unknown-linux-gnu
         ;;
     armv7)
         export DOCKER_ARCH=arm/v7
+        export RUST_TRIPLET=arm-unknown-linux-gnueabihf
         ;;
     arm64)
         export DOCKER_ARCH=arm64/v8
+        export RUST_TRIPLET=aarch64-unknown-linux-gnu
         ;;
-    *)
-        export DOCKER_ARCH=$ISA
+    ppc64le)
+        export DOCKER_ARCH=ppc64le
+        export RUST_TRIPLET=powerpc64le-unknown-linux-gnu
+        ;;
+    s390x)
+        export DOCKER_ARCH=s390x
+        export RUST_TRIPLET=s390x-unknown-linux-gnu
+        ;;
+    *)        
+        echo "ERROR: could not determine architecture settings. PLEASE FIX ME"
+        exit 1
         ;;
 esac
 
@@ -77,6 +92,7 @@ docker pull --platform linux/${DOCKER_ARCH} registry.sean.farm/${PLATFORM}-build
 
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \
+       --build-arg RUST_TRIPLET="${RUST_TRIPLET}" \
        --platform linux/${DOCKER_ARCH} \
        -f ${DOCKERFILE} \
        --target export \

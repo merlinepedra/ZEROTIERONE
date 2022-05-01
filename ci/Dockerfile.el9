@@ -1,10 +1,11 @@
 FROM quay.io/centos/centos:stream9 as stage
+ARG RUST_TRIPLET
 RUN dnf -y update
 RUN dnf -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN dnf -y install clang openssl-libs openssl-devel
 RUN dnf -y install systemd
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
-RUN /root/.cargo/bin/rustup install 1.60.0
+COPY ./ci/rust.sh .
+RUN ./rust.sh ${RUST_TRIPLET}
 
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD

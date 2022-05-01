@@ -95,7 +95,7 @@ docker buildx build \
        --build-arg RUST_TRIPLET="${RUST_TRIPLET}" \
        --platform linux/${DOCKER_ARCH} \
        -f ${DOCKERFILE} \
-       --target export \
        -t build \
        . \
        --output .
+       # --target export \

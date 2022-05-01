@@ -11,7 +11,7 @@ ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 RUN make redhat
-RUN ls -laR /root/rpmbuild/RPMS
+RUN ls -lahR /root/rpmbuild/RPMS
 
 FROM stage AS export
 ARG PLATFORM

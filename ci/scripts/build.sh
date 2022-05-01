@@ -15,18 +15,36 @@ case $PLATFORM in
         export PKGFMT=deb
 esac
 
+# OSX
+# x86_64-apple-darwin
+# aarch64-apple-darwin
+
+# Windows
+# x86_64-pc-windows-msvc
+# i686-pc-windows-msvc
+# aarch64-pc-windows-msvc
+
+# Linux
+# i686-unknown-linux-gnu
+# x86_64-unknown-linux-gnu
+# arm-unknown-linux-gnueabi       ?
+# arm-unknown-linux-gnueabihf     ?
+# armv7-unknown-linux-gnueabihf
+# 
+
 case $ISA in
     armv5)
-        export ARCH=arm/v5
+        export DOCKER_ARCH=arm/v5
+        export LLVM_ARCH=arm
         ;;
     armv7)
-        export ARCH=arm/v7
+        export DOCKER_ARCH=arm/v7
         ;;
     arm64)
-        export ARCH=arm64/v8
+        export DOCKER_ARCH=arm64/v8
         ;;
     *)
-        export ARCH=$ISA
+        export DOCKER_ARCH=$ISA
         ;;
 esac
 
@@ -55,11 +73,11 @@ fi
 export DOCKER_BUILDKIT=1
 docker run --privileged --rm tonistiigi/binfmt --install all
 
-docker pull --platform linux/${ARCH} registry.sean.farm/${PLATFORM}-builder
+docker pull --platform linux/${DOCKER_ARCH} registry.sean.farm/${PLATFORM}-builder
 
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \
-       --platform linux/${ARCH} \
+       --platform linux/${DOCKER_ARCH} \
        -f ${DOCKERFILE} \
        --target export \
        -t build \

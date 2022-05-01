@@ -72,7 +72,7 @@ fi
 echo "#~~~~~~~~~~~~~~~~~~~~"
 echo "$0 variables:"
 echo "nproc: $(nproc)"
-echo "ISA: ${ISA}"
+echo "ZT_ISA: ${ZT_ISA}"
 echo "VERSION: ${VERSION}"
 echo "EVENT: ${EVENT}"
 echo "PKGFMT: ${PKGFMT}"

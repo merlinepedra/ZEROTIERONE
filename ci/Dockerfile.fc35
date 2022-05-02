@@ -1,6 +1,6 @@
 FROM fedora:35 as stage
 ARG RUST_TRIPLET
-RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
+RUN yum -y install autoconf automake binutils gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN yum -y install clang openssl openssl-devel
 RUN yum -y install systemd
 COPY ./ci/rust.sh .

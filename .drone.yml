@@ -11,6 +11,214 @@ steps:
   - ./ci/scripts/build.sh el9 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el9 arm64 build
+platform:
+  arch: arm64
+  os: linux
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el9 ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el9 s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el8 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 arm64 build
+platform:
+  arch: arm64
+  os: linux
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el8 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el8 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el8 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el7 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el7 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el7 ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el7 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -laR *
+  image: registry.sean.farm/honda-builder
+  name: list
 trigger:
   event:
   - push

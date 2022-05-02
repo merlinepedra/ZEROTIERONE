@@ -1,6 +1,6 @@
 
 local targets = [
-      { "os": "linux", "name": "el9", "isas": [ "amd64" ], "events": ["push", "tag" ] },
+      // { "os": "linux", "name": "el9", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "el8", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "el7", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "fc37", "isas": [ "amd64" ], "events": ["push", "tag" ] },
@@ -22,9 +22,9 @@ local targets = [
       // this is the cononical list, so don't futz with this while experimenting
       //
 
-      // { "os": "linux", "name": "el7", "isas": [ "amd64", "ppc64le"], "events": ["push", "tag" ] },
-      // { "os": "linux", "name": "el8", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
-      // { "os": "linux", "name": "el9", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "el9", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "el8", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "el7", "isas": [ "amd64", "ppc64le"], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "fc35", "isas": [ "amd64", "arm64", "armv7", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "fc36", "isas": [ "amd64", "arm64", "armv7", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "fc37", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },

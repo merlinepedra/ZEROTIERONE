@@ -97,5 +97,5 @@ docker buildx build \
        -f ${DOCKERFILE} \
        -t build \
        . \
-       # --output .
-       # --target export \
+       --output . \
+       --target export

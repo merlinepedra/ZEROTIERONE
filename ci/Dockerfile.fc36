@@ -9,6 +9,7 @@ RUN ./rust.sh ${RUST_TRIPLET}
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
+RUN /usr/bin/clang --version
 RUN make redhat
 
 FROM scratch AS export

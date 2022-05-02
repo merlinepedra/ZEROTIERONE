@@ -1,4 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi as stage
+ARG RUST_TRIPLET
 RUN yum -y update
 RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build
 RUN yum -y install clang openssl-libs openssl-devel

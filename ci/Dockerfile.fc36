@@ -10,7 +10,7 @@ ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 RUN /usr/bin/clang --version
-RUN make redhat
+RUN CC=/usr/bin/clang CXX=/usr/bin/clang++ make redhat
 
 FROM scratch AS export
 ARG PLATFORM

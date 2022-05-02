@@ -13,6 +13,6 @@ COPY . .
 RUN make redhat
 RUN ls -lahR /root/rpmbuild/RPMS
 
-FROM stage AS export
+FROM scratch AS export
 ARG PLATFORM
 COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

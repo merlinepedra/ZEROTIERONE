@@ -1,3 +1,4 @@
+
 # Automagically pick CLANG or RH/CentOS newer GCC if present
 # This is only done if we have not overridden these with an environment or CLI variable
 ifeq ($(origin CC),default)

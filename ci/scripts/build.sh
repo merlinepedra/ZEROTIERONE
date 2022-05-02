@@ -73,6 +73,7 @@ echo "#~~~~~~~~~~~~~~~~~~~~"
 echo "$0 variables:"
 echo "nproc: $(nproc)"
 echo "ZT_ISA: ${ZT_ISA}"
+echo "DOCKER_ARCH: ${DOCKER_ARCH}"
 echo "VERSION: ${VERSION}"
 echo "EVENT: ${EVENT}"
 echo "PKGFMT: ${PKGFMT}"
@@ -88,7 +89,7 @@ fi
 export DOCKER_BUILDKIT=1
 docker run --privileged --rm tonistiigi/binfmt --install all
 
-docker pull --platform linux/${DOCKER_ARCH} registry.sean.farm/${PLATFORM}-builder
+# docker pull --platform linux/${DOCKER_ARCH} registry.sean.farm/${PLATFORM}-builder
 
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \

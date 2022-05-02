@@ -6,14 +6,14 @@ RUN yum -y install systemd
 RUN yum -y install openssl11-devel
 RUN yum -y install centos-release-scl
 RUN yum -y install devtoolset-8
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
-RUN /root/.cargo/bin/rustup install 1.60.0
+COPY ./ci/rust.sh .
+RUN ./rust.sh ${RUST_TRIPLET}
 
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 RUN make redhat
 
-FROM stage AS export
+FROM scratch AS export
 ARG PLATFORM
 COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

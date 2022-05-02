@@ -97,5 +97,5 @@ docker buildx build \
        -f ${DOCKERFILE} \
        -t build \
        . \
-       --output . \
+       --output type=local,dest=. \
        --target export

@@ -457,6 +457,8 @@ uninstall:	FORCE
 # 	debuild --no-lintian -I -i -us -uc -nc -b
 
 debian: FORCE
+	@echo "MAKEFILE DEBUG: CC=$(CC)"
+	@echo "MAKEFILE DEBUG: CXX=$(CXX)"
 	@echo "building deb package"
 	debuild --no-lintian -b -uc -us
 

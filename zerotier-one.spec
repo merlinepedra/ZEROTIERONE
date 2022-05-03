@@ -9,19 +9,19 @@ URL:            https://www.zerotier.com
 # Fedora
 
 %if "%{?dist}" == ".fc35"
-BuildRequires: systemd openssl-devel
+BuildRequires: systemd clang openssl openssl-devel
 Requires:      systemd openssl
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
 %if "%{?dist}" == ".fc36"
-BuildRequires: systemd openssl1.1 openssl1.1-devel
+BuildRequires: systemd clang openssl1.1 openssl1.1-devel
 Requires:      systemd openssl1.1
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif
 
 %if "%{?dist}" == ".fc37"
-BuildRequires: systemd openssl1.1 openssl1.1-devel
+BuildRequires: systemd clang openssl1.1 openssl1.1-devel
 Requires:      systemd openssl1.1
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 %endif

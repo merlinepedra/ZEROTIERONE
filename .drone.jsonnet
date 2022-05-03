@@ -1,7 +1,6 @@
 
 local targets = [
-      { "os": "linux", "name": "jammy", "isas": [ "ppc64le" ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "bookworm", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "bookworm", "isas": [ "amd64", "arm64", "s390x" ], "events": ["push", "tag" ] },
 
       // { "os": "linux", "name": "el9", "isas": [ "amd64" ], "events": ["push", "tag" ] },
       // { "os": "linux", "name": "el8", "isas": [ "amd64" ], "events": ["push", "tag" ] },

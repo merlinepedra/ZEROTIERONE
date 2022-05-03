@@ -10,9 +10,6 @@ ifeq ($(origin CXX),default)
 	CXX:=$(shell if [ -e /opt/rh/devtoolset-8/root/usr/bin/g++ ]; then echo /opt/rh/devtoolset-8/root/usr/bin/g++; else echo $(CXX); fi)
 endif
 
-@echo "DEBUG: CC=$(CC)"
-@echo "DEBUG: CXX=$(CXX)"
-
 INCLUDES?=-Izeroidc/target
 DEFS?=
 LDLIBS?=
@@ -467,6 +464,8 @@ debian-clean: FORCE
 	-rm -rf debian/files debian/zerotier-one*.debhelper debian/zerotier-one.substvars debian/*.log debian/zerotier-one debian/.debhelper debian/debhelper-build-stamp
 
 redhat:	FORCE
+	@echo "MAKEFILE DEBUG: CC=$(CC)"
+	@echo "MAKEFILE DEBUG: CXX=$(CXX)"
 	@echo "building rpm package"
 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 

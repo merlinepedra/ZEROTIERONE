@@ -10,6 +10,9 @@ ifeq ($(origin CXX),default)
 	CXX:=$(shell if [ -e /opt/rh/devtoolset-8/root/usr/bin/g++ ]; then echo /opt/rh/devtoolset-8/root/usr/bin/g++; else echo $(CXX); fi)
 endif
 
+@echo "DEBUG: CC=$(CC)"
+@echo "DEBUG: CXX=$(CXX)"
+
 INCLUDES?=-Izeroidc/target
 DEFS?=
 LDLIBS?=

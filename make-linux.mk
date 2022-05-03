@@ -67,9 +67,9 @@ ifeq ($(ZT_DEBUG),1)
 	# C25519 in particular is almost UNUSABLE in -O0 even on a 3ghz box!
 node/Salsa20.o node/SHA512.o node/C25519.o node/Poly1305.o: CXXFLAGS=-Wall -O2 -g -pthread $(INCLUDES) $(DEFS)
 else
-	CFLAGS?=-O3 -fstack-protector -fPIE -fPIC
+	CFLAGS?=-O3 -fstack-protector -fPIE
 	override CFLAGS+=-Wall -Wno-deprecated -pthread $(INCLUDES) -DNDEBUG $(DEFS)
-	CXXFLAGS?=-O3 -fstack-protector -fPIE -fPIC
+	CXXFLAGS?=-O3 -fstack-protector -fPIE
 	override CXXFLAGS+=-Wall -Wno-deprecated -std=c++11 -pthread $(INCLUDES) -DNDEBUG $(DEFS)
 	LDFLAGS=-pie -Wl,-z,relro,-z,now
 	RUSTFLAGS=--release

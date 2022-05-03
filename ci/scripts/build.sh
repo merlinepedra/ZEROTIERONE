@@ -55,7 +55,7 @@ case $ZT_ISA in
         ;;
     ppc64le)
         export DOCKER_ARCH=ppc64le
-        export RUST_TRIPLET=powerpc64-unknown-linux-gnu
+        export RUST_TRIPLET=powerpc64le-unknown-linux-gnu
         ;;    
     mips64le)
         export DOCKER_ARCH=mips64le

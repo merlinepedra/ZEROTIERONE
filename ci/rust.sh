@@ -15,6 +15,8 @@ cd /tmp
 echo curl -sSf "https://static.rust-lang.org/rustup/dist/${RUST_TRIPLET}/rustup-init" -o rustup-init
 curl -sSf "https://static.rust-lang.org/rustup/dist/${RUST_TRIPLET}/rustup-init" -o rustup-init
 chmod +x ./rustup-init
+ls -la ./rustup-init
+file ./rustup-init
 ./rustup-init --default-host ${RUST_TRIPLET} --default-toolchain stable -y
 
 /root/.cargo/bin/rustup install 1.60.0

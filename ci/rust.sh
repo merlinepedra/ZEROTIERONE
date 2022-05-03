@@ -7,6 +7,7 @@ if [ $# -eq 0 ]; then
     exit 1
 else
     export RUST_TRIPLET=$1
+    echo "Using RUST_TRIPLET=${RUST_TRIPLET}"
 fi
 
 cd /tmp

@@ -59,17 +59,17 @@ ifeq ($(ZT_SANITIZE),1)
 	override DEFS+=-fsanitize=address -DASAN_OPTIONS=symbolize=1
 endif
 ifeq ($(ZT_DEBUG),1)
-	override CFLAGS+=-Wall -Wno-deprecated -g -O -pthread $(INCLUDES) $(DEFS)
-	override CXXFLAGS+=-Wall -Wno-deprecated -g -O -std=c++11 -pthread $(INCLUDES) $(DEFS)
+	override CFLAGS+=-fPIE -fPIC -Wall -Wno-deprecated -g -O -pthread $(INCLUDES) $(DEFS)
+	override CXXFLAGS+=-fPIE -fPIC -Wall -Wno-deprecated -g -O -std=c++11 -pthread $(INCLUDES) $(DEFS)
 	ZT_TRACE=1
 	RUSTFLAGS=
 	# The following line enables optimization for the crypto code, since
 	# C25519 in particular is almost UNUSABLE in -O0 even on a 3ghz box!
 node/Salsa20.o node/SHA512.o node/C25519.o node/Poly1305.o: CXXFLAGS=-Wall -O2 -g -pthread $(INCLUDES) $(DEFS)
 else
-	CFLAGS?=-O3 -fstack-protector -fPIE
+	CFLAGS?=-O3 -fstack-protector -fPIE -fPIC
 	override CFLAGS+=-Wall -Wno-deprecated -pthread $(INCLUDES) -DNDEBUG $(DEFS)
-	CXXFLAGS?=-O3 -fstack-protector -fPIE
+	CXXFLAGS?=-O3 -fstack-protector -fPIE -fPIC
 	override CXXFLAGS+=-Wall -Wno-deprecated -std=c++11 -pthread $(INCLUDES) -DNDEBUG $(DEFS)
 	LDFLAGS=-pie -Wl,-z,relro,-z,now
 	RUSTFLAGS=--release
@@ -336,10 +336,6 @@ ifeq ($(ZT_USE_ARM32_NEON_ASM_CRYPTO),1)
 	override DEFS+=-DZT_USE_ARM32_NEON_ASM_SALSA2012
 	override CORE_OBJS+=ext/arm32-neon-salsa2012-asm/salsa2012.o
 endif
-
-# yolo
-override CFLAGS+=-fPIE -fPIC
-override CXXFLAGS+=-fPIE -fPIC
 
 .PHONY: all
 all:	one

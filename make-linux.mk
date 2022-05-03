@@ -337,6 +337,10 @@ ifeq ($(ZT_USE_ARM32_NEON_ASM_CRYPTO),1)
 	override CORE_OBJS+=ext/arm32-neon-salsa2012-asm/salsa2012.o
 endif
 
+# yolo
+override CFLAGS+=-fPIE -fPIC
+override CXXFLAGS+=-fPIE -fPIC
+
 .PHONY: all
 all:	one
 
@@ -457,12 +461,14 @@ uninstall:	FORCE
 # 	debuild --no-lintian -I -i -us -uc -nc -b
 
 echo_flags:
+	@echo "=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~"
 	@echo "echo_flags :: CC=$(CC)"
 	@echo "echo_flags :: CXX=$(CXX)"
 	@echo "echo_flags :: CFLAGS=$(CFLAGS)"
 	@echo "echo_flags :: CXXFLAGS=$(CXXFLAGS)"
 	@echo "echo_flags :: LDFLAGS=$(LDFLAGS)"
 	@echo "echo_flags :: RUSTFLAGS=$(RUSTFLAGS)"
+	@echo "=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~"
 
 debian: echo_flags
 	@echo "building deb package"

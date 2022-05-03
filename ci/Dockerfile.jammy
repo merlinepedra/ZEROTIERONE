@@ -1,0 +1,18 @@
+FROM ubuntu:jammy as stage
+ARG RUST_TRIPLET
+RUN apt-get -y update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apt-utils 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install pkg-config
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install make clang libssl-dev curl wget unzip ca-certificates
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential fakeroot devscripts debhelper dpkg-dev dh-autoreconf
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install zlib1g
+COPY ./ci/rust.sh .
+RUN ./rust.sh ${RUST_TRIPLET}
+
+WORKDIR /work/build
+COPY . .
+RUN make debian
+
+FROM scratch AS export
+ARG PLATFORM
+COPY --from=stage /work/*.deb ./${PLATFORM}/

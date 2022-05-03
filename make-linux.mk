@@ -456,18 +456,22 @@ uninstall:	FORCE
 # debian:	FORCE
 # 	debuild --no-lintian -I -i -us -uc -nc -b
 
-debian: FORCE
-	@echo "MAKEFILE DEBUG: CC=$(CC)"
-	@echo "MAKEFILE DEBUG: CXX=$(CXX)"
+echo_flags:
+	@echo "echo_flags :: CC=$(CC)"
+	@echo "echo_flags :: CXX=$(CXX)"
+	@echo "echo_flags :: CFLAGS=$(CFLAGS)"
+	@echo "echo_flags :: CXXFLAGS=$(CXXFLAGS)"
+	@echo "echo_flags :: LDFLAGS=$(LDFLAGS)"
+	@echo "echo_flags :: RUSTFLAGS=$(RUSTFLAGS)"
+
+debian: echo_flags
 	@echo "building deb package"
 	debuild --no-lintian -b -uc -us
 
-debian-clean: FORCE
+debian-clean:
 	-rm -rf debian/files debian/zerotier-one*.debhelper debian/zerotier-one.substvars debian/*.log debian/zerotier-one debian/.debhelper debian/debhelper-build-stamp
 
-redhat:	FORCE
-	@echo "MAKEFILE DEBUG: CC=$(CC)"
-	@echo "MAKEFILE DEBUG: CXX=$(CXX)"
+redhat:	echo_flags
 	@echo "building rpm package"
 	rpmbuild --target `rpm -q bash --qf "%{arch}"` -ba zerotier-one.spec
 

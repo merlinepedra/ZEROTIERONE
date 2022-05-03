@@ -49,6 +49,14 @@ case $ZT_ISA in
         export DOCKER_ARCH=arm64/v8
         export RUST_TRIPLET=aarch64-unknown-linux-gnu
         ;;
+    riscv64)
+        export DOCKER_ARCH=riscv64
+        export RUST_TRIPLET=riscv64gc-unknown-linux-gnu
+        ;;
+    mips64le)
+        export DOCKER_ARCH=mips64le
+        export RUST_TRIPLET=mipsel-unknown-linux-gnu
+        ;;    
     ppc64le)
         export DOCKER_ARCH=ppc64le
         export RUST_TRIPLET=powerpc64le-unknown-linux-gnu
@@ -74,6 +82,7 @@ echo "$0 variables:"
 echo "nproc: $(nproc)"
 echo "ZT_ISA: ${ZT_ISA}"
 echo "DOCKER_ARCH: ${DOCKER_ARCH}"
+echo "RUST_TRIPLET: ${RUST_TRIPLET}"
 echo "VERSION: ${VERSION}"
 echo "EVENT: ${EVENT}"
 echo "PKGFMT: ${PKGFMT}"

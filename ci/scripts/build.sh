@@ -56,10 +56,6 @@ case $ZT_ISA in
     mips64le)
         export DOCKER_ARCH=mips64le
         export RUST_TRIPLET=mips64el-unknown-linux-gnuabi64
-        ;;    
-    ppc64le)
-        export DOCKER_ARCH=ppc64le
-        export RUST_TRIPLET=powerpc64le-unknown-linux-gnu
         ;;
     s390x)
         export DOCKER_ARCH=s390x

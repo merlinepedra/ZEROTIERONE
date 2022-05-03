@@ -12,6 +12,7 @@ fi
 
 cd /tmp
 # curl --proto "=https" --tlsv1.2 -sSf "https://static.rust-lang.org/rustup/dist/${RUST_TRIPLET}/rustup-init" -O rustup-init
+echo curl -sSf "https://static.rust-lang.org/rustup/dist/${RUST_TRIPLET}/rustup-init" -O rustup-ini
 curl -sSf "https://static.rust-lang.org/rustup/dist/${RUST_TRIPLET}/rustup-init" -O rustup-init
 chmod +x ./rustup-init
 ./rustup-init --default-host ${RUST_TRIPLET} --default-toolchain stable -y

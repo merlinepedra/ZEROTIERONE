@@ -12,6 +12,7 @@ RUN apk add make
 RUN apk add musl
 RUN apk add musl-dev
 RUN apk add libstdc++
+RUN apk add libc-dev
 
 COPY . .
 RUN make one

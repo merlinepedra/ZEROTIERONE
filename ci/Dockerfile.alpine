@@ -12,6 +12,7 @@ RUN apk add make
 RUN apk add cmake
 RUN apk add clang
 RUN apk add openssl-dev
+RUN apk add linux-headers
 
 COPY . .
 RUN make one

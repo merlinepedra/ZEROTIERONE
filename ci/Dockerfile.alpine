@@ -8,6 +8,8 @@ RUN apk add bash
 RUN apk add file
 RUN apk add rust
 RUN apk add make
+RUN apk add make
+RUN apk add musl
 
 COPY . .
 RUN make one

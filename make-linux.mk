@@ -336,8 +336,8 @@ ifeq ($(ZT_USE_ARM32_NEON_ASM_CRYPTO),1)
 endif
 
 # Position Independence
-# override CFLAGS+=-fPIC -fPIE
-# override CXXFLAGS+=-fPIC -fPIE
+override CFLAGS+=-fPIC -fPIE
+override CXXFLAGS+=-fPIC -fPIE
 
 .PHONY: all
 all:	one

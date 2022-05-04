@@ -48,8 +48,8 @@ local Build(platform, os, isa, events) = {
       "name": "list",
       "image": "registry.sean.farm/honda-builder",
       "commands": [
-        "ls -la",
-        "ldd zerotier-one"
+        "ls -la " + platform,
+        "ldd " + platform + "/zerotier-one"
       ]
     },
     // {

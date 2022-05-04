@@ -10,3 +10,7 @@ RUN ./rust.sh ${RUST_TRIPLET}
 COPY . .
 RUN make one
 RUN ls -lahR
+
+FROM scratch AS export
+ARG PLATFORM
+COPY --from=stage * ./${PLATFORM}/

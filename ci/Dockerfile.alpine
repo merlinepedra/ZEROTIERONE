@@ -12,6 +12,7 @@ RUN apk add cmake
 RUN apk add clang
 RUN apk add openssl-dev
 RUN apk add linux-headers
+RUN apk add musl-dev
 
 COPY . .
 RUN ZT_STATIC=1 make one

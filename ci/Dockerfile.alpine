@@ -15,7 +15,7 @@ RUN apk add openssl-dev
 RUN apk add linux-headers
 
 COPY . .
-RUN make one
+RUN ZT_STATIC=1 make one
 RUN ls -lah
 
 FROM scratch AS export

@@ -3,7 +3,7 @@ ARG RUST_TRIPLET
 
 RUN apk update
 RUN apk add clang
-
+RUN apk add bash
 COPY ./ci/rust.sh .
 RUN ./rust.sh ${RUST_TRIPLET}
 

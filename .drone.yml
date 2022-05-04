@@ -13,7 +13,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -36,7 +36,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -59,7 +59,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -85,7 +85,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -111,7 +111,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -134,7 +134,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -157,7 +157,7 @@ steps:
   name: build
 - commands:
   - ls -la alpine
-  - ldd alpine/zerotier-one
+  - file alpine/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

@@ -9,7 +9,9 @@ RUN apk add file
 RUN apk add rust
 RUN apk add cargo
 RUN apk add make
+RUN apk add cmake
 RUN apk add clang
+RUN apk add openssl-dev
 
 COPY . .
 RUN make one

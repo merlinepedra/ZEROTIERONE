@@ -47,7 +47,10 @@ local Build(platform, os, isa, events) = {
     {
       "name": "list",
       "image": "registry.sean.farm/honda-builder",
-      "commands": [ "ls -laR *" ]
+      "commands": [
+        "ls -la"
+        "ldd zerotier-one"
+      ]
     },
     // {
     //   "name": "sign",
@@ -128,7 +131,7 @@ local Test(platform, os, isa, events) = {
   ],
   "image_pull_secrets": [ "dockerconfigjson" ],
   depends_on: [ platform + " " + isa + " " + "build" ],
-  [ if isa == "arm64" || isa == "armv7" then "platform" ]: { os: os, arch: "arm64" },
+  [ if isa == "arm64" || isa == "armv7" || isa == "armv6" then "platform" ]: { os: os, arch: "arm64" },
   "trigger": { "event": events }
 };
 

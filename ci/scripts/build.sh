@@ -41,7 +41,10 @@ case $ZT_ISA in
         export DOCKER_ARCH=amd64
         export RUST_TRIPLET=x86_64-unknown-linux-gnu
         ;;
-    armv7)
+    armv6)
+        export DOCKER_ARCH=arm/v6
+        export RUST_TRIPLET=arm-unknown-linux-gnueabi
+    armv7)        
         export DOCKER_ARCH=arm/v7
         export RUST_TRIPLET=arm-unknown-linux-gnueabihf
         ;;

@@ -1,0 +1,12 @@
+FROM alpine:3.15.4 as stage
+ARG RUST_TRIPLET
+
+RUN apk update
+RUN apk add clang
+
+COPY ./ci/rust.sh .
+RUN ./rust.sh ${RUST_TRIPLET}
+
+COPY . .
+RUN make one
+RUN ls -lahR

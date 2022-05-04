@@ -12,7 +12,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -34,7 +35,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -56,7 +58,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -81,7 +84,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -106,7 +110,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -128,7 +133,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -150,7 +156,8 @@ steps:
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -laR *
+  - ls -la
+  - ldd zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

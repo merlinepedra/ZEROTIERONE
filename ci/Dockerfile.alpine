@@ -14,7 +14,7 @@ RUN apk add openssl-dev
 RUN apk add linux-headers
 RUN apk add libstdc++
 RUN apk add build-base
-RUN apk add libssl
+RUN apk add libssl3
 
 COPY . .
 RUN ZT_STATIC=1 make one

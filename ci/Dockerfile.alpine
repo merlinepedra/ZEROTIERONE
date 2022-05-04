@@ -12,9 +12,8 @@ RUN apk add cmake
 RUN apk add clang
 RUN apk add openssl-dev
 RUN apk add linux-headers
-RUN apk add libstdc++
 RUN apk add build-base
-RUN apk add libssl3
+RUN apk add openssl-libs-static
 
 COPY . .
 RUN ZT_STATIC=1 make one

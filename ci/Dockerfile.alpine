@@ -10,6 +10,7 @@ RUN apk add rust
 RUN apk add make
 RUN apk add make
 RUN apk add musl
+RUN apk add musl-dev
 
 COPY . .
 RUN make one

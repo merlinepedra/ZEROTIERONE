@@ -16,8 +16,8 @@ RUN apk add linux-headers
 
 COPY . .
 RUN make one
-RUN ls -lahR
+RUN ls -lah
 
 FROM scratch AS export
 ARG PLATFORM
-COPY --from=stage * ./${PLATFORM}/
+COPY --from=stage zerotier-one ./${PLATFORM}/

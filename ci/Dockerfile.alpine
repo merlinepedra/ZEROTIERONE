@@ -1,4 +1,4 @@
-FROM alpine:latest as stage
+FROM alpine:edge as stage
 ARG RUST_TRIPLET
 
 RUN apk update
@@ -7,6 +7,7 @@ RUN apk add clang
 RUN apk add bash
 RUN apk add file
 RUN apk add rust
+RUN apk add cmake
 
 COPY . .
 RUN make one

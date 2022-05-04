@@ -3,7 +3,6 @@ ARG RUST_TRIPLET
 
 RUN apk update
 RUN apk add curl
-RUN apk add build-base
 RUN apk add bash
 RUN apk add file
 RUN apk add rust

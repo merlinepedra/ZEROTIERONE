@@ -4,16 +4,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: focal s390x build
+name: el9 amd64 build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh focal s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el9 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la focal
-  - file focal/zerotier-one
+  - ls -la el9
+  - file el9/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -27,19 +27,19 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: bionic armv7 build
+name: el9 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh bionic armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el9 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la bionic
-  - file bionic/zerotier-one
+  - ls -la el9
+  - file el9/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -53,19 +53,88 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: xenial armv7 build
+name: el9 ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la el9
+  - file el9/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el9 s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la el9
+  - file el9/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el8 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la el8
+  - file el8/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: el8 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh xenial armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el8 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la xenial
-  - file xenial/zerotier-one
+  - ls -la el8
+  - file el8/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -79,16 +148,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: xenial ppc64le build
+name: el8 ppc64le build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh xenial ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el8 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la xenial
-  - file xenial/zerotier-one
+  - ls -la el8
+  - file el8/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -102,16 +171,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: xenial s390x build
+name: el8 s390x build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh xenial s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el8 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la xenial
-  - file xenial/zerotier-one
+  - ls -la el8
+  - file el8/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -125,16 +194,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: trusty amd64 build
+name: el7 amd64 build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh trusty amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el7 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la trusty
-  - file trusty/zerotier-one
+  - ls -la el7
+  - file el7/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -148,19 +217,65 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: trusty arm64 build
+name: el7 ppc64le build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el7 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la el7
+  - file el7/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: amzn2 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh amzn2 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la amzn2
+  - file amzn2/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: amzn2 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh trusty arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh amzn2 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la trusty
-  - file trusty/zerotier-one
+  - ls -la amzn2
+  - file amzn2/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -174,19 +289,42 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: trusty armv7 build
+name: fc37 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh fc37 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la fc37
+  - file fc37/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: fc37 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh trusty armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc37 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la trusty
-  - file trusty/zerotier-one
+  - ls -la fc37
+  - file fc37/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -200,16 +338,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: trusty 386 build
+name: fc37 ppc64le build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh trusty 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc37 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la trusty
-  - file trusty/zerotier-one
+  - ls -la fc37
+  - file fc37/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -223,16 +361,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: trusty ppc64le build
+name: fc37 s390x build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh trusty ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc37 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la trusty
-  - file trusty/zerotier-one
+  - ls -la fc37
+  - file fc37/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -246,19 +384,42 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: stretch armv7 build
+name: fc36 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh fc36 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la fc36
+  - file fc36/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: fc36 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh stretch armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc36 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la stretch
-  - file stretch/zerotier-one
+  - ls -la fc36
+  - file fc36/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -272,16 +433,16 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: jessie amd64 build
+name: fc36 ppc64le build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh jessie amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc36 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la jessie
-  - file jessie/zerotier-one
+  - ls -la fc36
+  - file fc36/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -295,19 +456,65 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: jessie armv7 build
+name: fc36 s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh fc36 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la fc36
+  - file fc36/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: fc35 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh fc35 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la fc35
+  - file fc35/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: fc35 arm64 build
 platform:
   arch: arm64
   os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh jessie armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc35 arm64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la jessie
-  - file jessie/zerotier-one
+  - ls -la fc35
+  - file fc35/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:
@@ -321,16 +528,39 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: jessie 386 build
+name: fc35 ppc64le build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh jessie 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh fc35 ppc64le 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la jessie
-  - file jessie/zerotier-one
+  - ls -la fc35
+  - file fc35/zerotier-one
+  image: registry.sean.farm/honda-builder
+  name: list
+trigger:
+  event:
+  - push
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
+name: fc35 s390x build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh fc35 s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la fc35
+  - file fc35/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

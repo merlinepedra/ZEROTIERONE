@@ -1,0 +1,20 @@
+FROM centos:6 as stage
+ARG RUST_TRIPLET
+RUN yum -y install autoconf automake binutils gcc gcc-c++ gettext libtool make patch pkgconfig redhat-rpm-config rpm-build rpm-sign
+RUN yum -y install clang openssl-libs openssl-devel
+RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+RUN yum -y install systemd
+RUN yum -y install openssl11-devel
+RUN yum -y install centos-release-scl
+RUN yum -y install devtoolset-8
+COPY ./ci/rust.sh .
+RUN ./rust.sh ${RUST_TRIPLET}
+
+ARG PLATFORM
+WORKDIR /root/rpmbuild/BUILD
+COPY . .
+RUN make redhat
+
+FROM scratch AS export
+ARG PLATFORM
+COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

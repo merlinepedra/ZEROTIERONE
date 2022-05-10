@@ -19,7 +19,7 @@ COPY . .
 RUN ZT_STATIC=1 make one
 RUN ls -la
 
-FROM centos:7 AS stage
+FROM centos:6 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./

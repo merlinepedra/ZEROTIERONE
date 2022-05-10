@@ -19,7 +19,8 @@ COPY . .
 RUN ZT_STATIC=1 make one
 RUN ls -lah
 
-# FROM centos:7 as package
+FROM centos:7 as export
+RUN ls -lah
 # ARG PLATFORM
 # WORKDIR /root/rpmbuild/BUILD
 # COPY . .

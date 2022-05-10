@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:edge as export
 ARG RUST_TRIPLET
 
 RUN apk update

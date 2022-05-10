@@ -28,6 +28,11 @@ Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 
 # RHEL
 
+%if "%{?dist}" == ".el6"
+Requires: chkconfig
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+%endif
+
 %if "%{?dist}" == ".el7"
 BuildRequires: systemd openssl11-devel
 Requires:      systemd openssl11
@@ -67,7 +72,7 @@ like conventional VPNs or VLANs. It can run on native systems, VMs, or
 containers (Docker, OpenVZ, etc.).
 
 %prep
-ls -la
+# ls -la
 # %if 0%{?rhel} && 0%{?rhel} >= 7
 # rm -rf *
 # ln -s %{getenv:PWD} %{name}-%{version}

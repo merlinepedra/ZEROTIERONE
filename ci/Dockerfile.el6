@@ -16,7 +16,7 @@ RUN apk add build-base
 RUN apk add openssl-libs-static
 
 COPY . .
-RUN ZT_STATIC=1 make one
+# RUN ZT_STATIC=1 make one
 RUN ls -lah
 
 FROM centos:7 as package

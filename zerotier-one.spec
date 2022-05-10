@@ -102,16 +102,32 @@ cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.
 %{_sbindir}/*
 %{_mandir}/*
 %{_localstatedir}/*
+%if 0%{?rhel} && 0%{?rhel} <= 6
+/etc/init.d/zerotier-one
+%else
 %{_unitdir}/%{name}.service
+%endif
 
 %post
+%if 0%{?rhel} && 0%{?rhel} <= 6
+echo "hello from el6"
+%else
 %systemd_post zerotier-one.service
+%endif
 
 %preun
+%if 0%{?rhel} && 0%{?rhel} <= 6
+echo "hello from el6"
+%else
 %systemd_preun zerotier-one.service
+%endif
 
 %postun
+%if 0%{?rhel} && 0%{?rhel} <= 6
+echo "hello from el6"
+%else
 %systemd_postun_with_restart zerotier-one.service
+%endif
 
 %changelog
 * Mon Apr 25 2022 Adam Ierymenko <adam.ierymenko@zerotier.com> - 1.8.9

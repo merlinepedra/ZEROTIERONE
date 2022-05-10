@@ -15,14 +15,13 @@ RUN apk add linux-headers
 RUN apk add build-base
 RUN apk add openssl-libs-static
 
-WORKDIR /root/rpmbuild/BUILD
 COPY . .
-RUN pwd
 RUN ZT_STATIC=1 make one
 RUN ls -lah
 
 FROM centos:7 as export
-RUN ls -lah
+WORKDIR /root/rpmbuild/BUILD
+RUN ls -la
 # ARG PLATFORM
 # WORKDIR /root/rpmbuild/BUILD
 # COPY . .

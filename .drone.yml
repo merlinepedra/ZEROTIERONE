@@ -13,7 +13,6 @@ steps:
   name: build
 - commands:
   - ls -la el6
-  - file el6/zerotier-one
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

@@ -23,8 +23,8 @@ FROM centos:7 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY --from=builder zerotier-one ./
 RUN yum -y install rpm-build
-# RUN make redhat
+RUN make redhat
 
-# FROM scratch AS export
-# ARG PLATFORM
-# COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/
+FROM scratch AS export
+ARG PLATFORM
+COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

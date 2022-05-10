@@ -82,7 +82,11 @@ containers (Docker, OpenVZ, etc.).
 # %endif
 
 %build
+%if "%{?dist}" == ".el6"
+make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} derp
+%else
 make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
+%endif
 
 %pre
 /usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one

@@ -17,6 +17,7 @@ RUN apk add openssl-libs-static
 
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
+RUN pwd
 RUN ZT_STATIC=1 make one
 RUN ls -lah
 

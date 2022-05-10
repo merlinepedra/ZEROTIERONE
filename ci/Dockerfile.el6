@@ -23,7 +23,7 @@ FROM centos:7 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./
-RUN yum -y install rpm-build make
+RUN yum -y install rpm-build make gcc openssl11-devel
 RUN ls -la
 RUN make redhat
 

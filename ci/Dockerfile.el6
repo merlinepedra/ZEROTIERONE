@@ -23,6 +23,7 @@ FROM centos:6 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./
+RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
 RUN yum -y install make clang openssl-libs openssl-devel redhat-rpm-config rpm-build rpm-sign
 RUN ls -la
 RUN make redhat

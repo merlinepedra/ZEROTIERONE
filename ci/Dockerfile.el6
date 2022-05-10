@@ -22,7 +22,7 @@ RUN ls -la
 FROM centos:7 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY --from=builder zerotier-one ./
-RUN yum -y install rpm-build
+RUN yum -y install rpm-build make
 RUN make redhat
 
 FROM scratch AS export

@@ -344,7 +344,7 @@ all:	one
 
 .PHONY: one
 
-derp:
+from_builder:
 	ln -sf zerotier-one zerotier-idtool
 	ln -sf zerotier-one zerotier-cli
 

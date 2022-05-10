@@ -83,7 +83,7 @@ containers (Docker, OpenVZ, etc.).
 
 %build
 %if "%{?dist}" == ".el6"
-make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} derp
+make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} from_builder
 %else
 make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 %endif

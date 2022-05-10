@@ -102,10 +102,11 @@ cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.
 %{_sbindir}/*
 %{_mandir}/*
 %{_localstatedir}/*
+
 %if 0%{?rhel} && 0%{?rhel} <= 6
-mkdir -p /$RPM_BUILD_ROOT/etc/init.d
-cp %{getenv:PWD}/ext/installfiles/linux/zerotier-one.init.rhel6 /$RPM_BUILD_ROOT/etc/init.d/zerotier-one
-chmod 0755 /$RPM_BUILD_ROOT/etc/init.d/zerotier-one
+mkdir -p $RPM_BUILD_ROOT/etc/init.d
+cp %{getenv:PWD}/ext/installfiles/linux/zerotier-one.init.rhel6 $RPM_BUILD_ROOT/etc/init.d/zerotier-one
+chmod 0755 $RPM_BUILD_ROOT/etc/init.d/zerotier-one
 %else
 %{_unitdir}/%{name}.service
 %endif

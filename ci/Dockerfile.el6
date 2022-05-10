@@ -23,6 +23,7 @@ FROM centos:7 as package
 ARG PLATFORM
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
+RUN yum -y install rpm-build
 RUN make redhat
 
 FROM scratch AS export

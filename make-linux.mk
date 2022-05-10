@@ -345,8 +345,8 @@ all:	one
 .PHONY: one
 
 derp:
-        ln -sf zerotier-one zerotier-idtool
-        ln -sf zerotier-one zerotier-cli
+	ln -sf zerotier-one zerotier-idtool
+	ln -sf zerotier-one zerotier-cli
 
 one: zerotier-one zerotier-idtool zerotier-cli
 

@@ -16,16 +16,16 @@ RUN apk add build-base
 RUN apk add openssl-libs-static
 
 COPY . .
-# RUN ZT_STATIC=1 make one
+RUN ZT_STATIC=1 make one
 RUN ls -lah
 
-FROM centos:7 as package
-ARG PLATFORM
-WORKDIR /root/rpmbuild/BUILD
-COPY . .
-RUN yum -y install rpm-build
-RUN make redhat
+# FROM centos:7 as package
+# ARG PLATFORM
+# WORKDIR /root/rpmbuild/BUILD
+# COPY . .
+# RUN yum -y install rpm-build
+# RUN make redhat
 
-FROM scratch AS export
-ARG PLATFORM
-COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/
+# FROM scratch AS export
+# ARG PLATFORM
+# COPY --from=stage /root/rpmbuild/RPMS/*/*.rpm ./${PLATFORM}/

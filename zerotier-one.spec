@@ -77,6 +77,7 @@ ls -la
 # %endif
 
 %build
+echo "dist: ${?dist}"
 make RUST_BACKTRACE=full ZT_USE_MINIUPNPC=1 %{?_smp_mflags} one
 
 %pre

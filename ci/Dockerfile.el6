@@ -23,7 +23,7 @@ FROM centos:7 AS stage
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./
-RUN yum -y install clang openssl-libs openssl-devel redhat-rpm-config rpm-build rpm-sign
+RUN yum -y install make clang openssl-libs openssl-devel redhat-rpm-config rpm-build rpm-sign
 RUN ls -la
 RUN make redhat
 

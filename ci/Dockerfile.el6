@@ -17,7 +17,7 @@ RUN apk add openssl-libs-static
 
 COPY . .
 RUN ZT_STATIC=1 make one
-RUN ls -lah
+RUN ls -la
 
 FROM centos:7 as export
 WORKDIR /root/rpmbuild/BUILD

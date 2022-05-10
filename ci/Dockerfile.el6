@@ -1,4 +1,4 @@
-FROM alpine:edge as stage
+FROM alpine:edge
 ARG RUST_TRIPLET
 
 RUN apk update
@@ -19,7 +19,7 @@ COPY . .
 RUN ZT_STATIC=1 make one
 RUN ls -la
 
-FROM centos:7 as export
+FROM centos:7
 WORKDIR /root/rpmbuild/BUILD
 RUN ls -la
 # ARG PLATFORM

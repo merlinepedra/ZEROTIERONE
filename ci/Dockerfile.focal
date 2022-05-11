@@ -1,6 +1,6 @@
 ARG DOCKER_ARCH
 ARG PLATFORM
-FROM --platform=linux/${DOCKER_ARCH} alpine:edge AS builder
+FROM --platform=linux/${DOCKER_ARCH} alpine:latest AS builder
 
 RUN apk update
 RUN apk add curl

@@ -1,4 +1,5 @@
 ARG DOCKER_ARCH
+ARG PLATFORM
 FROM --platform=linux/${DOCKER_ARCH} alpine:edge AS builder
 
 RUN apk update

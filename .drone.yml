@@ -26,15 +26,18 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: focal s390x build
+name: bionic armv7 build
+platform:
+  arch: arm64
+  os: linux
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh focal s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh bionic armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la focal
+  - ls -la bionic
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

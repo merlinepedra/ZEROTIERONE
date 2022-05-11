@@ -19,7 +19,7 @@ COPY . .
 RUN ZT_STATIC=1 make one
 RUN ls -la
 
-FROM --platform=linux/$DOCKER_ARCH centos:6 AS stage
+FROM --platform=$DOCKER_ARCH centos:6 AS stage
 ARG DOCKER_ARCH
 WORKDIR /root/rpmbuild/BUILD
 COPY . .

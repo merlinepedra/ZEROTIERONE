@@ -20,6 +20,7 @@ RUN ZT_STATIC=1 make one
 RUN ls -la
 
 ARG DOCKER_ARCH
+ARG PLATFORM
 FROM --platform=linux/${DOCKER_ARCH} registry.sean.farm/${PLATFORM}-builder AS stage
 WORKDIR /work/build
 COPY . .

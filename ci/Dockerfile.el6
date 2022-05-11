@@ -1,6 +1,5 @@
-FROM alpine:edge AS builder
-ARG RUST_TRIPLET
 ARG DOCKER_ARCH
+FROM --platform=linux/${DOCKER_ARCH} alpine:edge AS builder
 
 RUN apk update
 RUN apk add curl
@@ -21,7 +20,6 @@ RUN ZT_STATIC=1 make one
 RUN ls -la
 
 FROM --platform=linux/${DOCKER_ARCH} centos:6 AS stage
-ARG DOCKER_ARCH
 WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./

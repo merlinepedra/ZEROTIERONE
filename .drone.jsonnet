@@ -14,13 +14,12 @@ local targets = [
       { "os": "linux", "name": "fc35", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "jammy", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "focal", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le"  ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "bionic", "isas": [ "amd64", "arm64", "armv7", "386", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      { "os": "linux", "name": "bionic", "isas": [ "amd64", "arm64", "386", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "xenial", "isas": [ "amd64", "arm64", "386" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "bookworm", "isas": [ "amd64", "arm64", "armv7", "386", "mips64le", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "bullseye", "isas": [ "amd64", "arm64", "armv7", "386", "mips64le", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "buster", "isas": [ "amd64", "arm64", "armv7", "386", "mips64le", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
       { "os": "linux", "name": "stretch", "isas": [ "amd64", "arm64", "386" ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "jessie", "isas": [ "amd64", "armv7", "386" ], "events": ["push", "tag" ] },
       // { "os": "windows", "name": "win2k19", "isas": [ "amd64" ], "events": ["push", "tag" ] }
 ];
 

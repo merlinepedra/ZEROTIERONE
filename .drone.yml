@@ -873,31 +873,6 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: bionic armv7 build
-platform:
-  arch: arm64
-  os: linux
-pull: always
-steps:
-- commands:
-  - ./ci/scripts/build.sh bionic armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
-  image: registry.sean.farm/honda-builder
-  name: build
-- commands:
-  - ls -la bionic
-  image: registry.sean.farm/honda-builder
-  name: list
-trigger:
-  event:
-  - push
-  - tag
-type: docker
----
-clone:
-  depth: 1
-image_pull_secrets:
-- dockerconfigjson
-kind: pipeline
 name: bionic 386 build
 pull: always
 steps:
@@ -1569,75 +1544,6 @@ steps:
   name: build
 - commands:
   - ls -la stretch
-  image: registry.sean.farm/honda-builder
-  name: list
-trigger:
-  event:
-  - push
-  - tag
-type: docker
----
-clone:
-  depth: 1
-image_pull_secrets:
-- dockerconfigjson
-kind: pipeline
-name: jessie amd64 build
-pull: always
-steps:
-- commands:
-  - ./ci/scripts/build.sh jessie amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
-  image: registry.sean.farm/honda-builder
-  name: build
-- commands:
-  - ls -la jessie
-  image: registry.sean.farm/honda-builder
-  name: list
-trigger:
-  event:
-  - push
-  - tag
-type: docker
----
-clone:
-  depth: 1
-image_pull_secrets:
-- dockerconfigjson
-kind: pipeline
-name: jessie armv7 build
-platform:
-  arch: arm64
-  os: linux
-pull: always
-steps:
-- commands:
-  - ./ci/scripts/build.sh jessie armv7 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
-  image: registry.sean.farm/honda-builder
-  name: build
-- commands:
-  - ls -la jessie
-  image: registry.sean.farm/honda-builder
-  name: list
-trigger:
-  event:
-  - push
-  - tag
-type: docker
----
-clone:
-  depth: 1
-image_pull_secrets:
-- dockerconfigjson
-kind: pipeline
-name: jessie 386 build
-pull: always
-steps:
-- commands:
-  - ./ci/scripts/build.sh jessie 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
-  image: registry.sean.farm/honda-builder
-  name: build
-- commands:
-  - ls -la jessie
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

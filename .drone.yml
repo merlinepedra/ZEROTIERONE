@@ -4,11 +4,11 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: el6 386 build
+name: el6 amd64 build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh el6 386 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh el6 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
@@ -26,15 +26,15 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
-name: el6 amd64 build
+name: focal s390x build
 pull: always
 steps:
 - commands:
-  - ./ci/scripts/build.sh el6 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  - ./ci/scripts/build.sh focal s390x 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
   image: registry.sean.farm/honda-builder
   name: build
 - commands:
-  - ls -la el6
+  - ls -la focal
   image: registry.sean.farm/honda-builder
   name: list
 trigger:

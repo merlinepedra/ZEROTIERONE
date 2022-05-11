@@ -24,7 +24,7 @@ WORKDIR /root/rpmbuild/BUILD
 COPY . .
 COPY --from=builder zerotier-one ./
 RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
-RUN yum -y install make gcc g++ openssl-libs openssl-devel redhat-rpm-config rpm-build rpm-sign
+RUN yum -y install make redhat-rpm-config rpm-build
 RUN pwd
 RUN ls -la
 RUN make redhat

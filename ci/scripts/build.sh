@@ -107,7 +107,7 @@ docker run --privileged --rm tonistiigi/binfmt --install all
 docker buildx build \
        --build-arg PLATFORM="${PLATFORM}" \
        --build-arg RUST_TRIPLET="${RUST_TRIPLET}" \
-       --build-arg DOCKER_ARCH="${DOCKER_ARCH}"  \
+       --build-arg DOCKER_ARCH="${DOCKER_ARCH}" \
        --platform linux/${DOCKER_ARCH} \
        -f ${DOCKERFILE} \
        -t build \

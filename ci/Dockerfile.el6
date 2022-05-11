@@ -1,5 +1,6 @@
 FROM alpine:edge AS builder
 ARG RUST_TRIPLET
+ARG DOCKER_ARCH
 
 RUN apk update
 RUN apk add curl

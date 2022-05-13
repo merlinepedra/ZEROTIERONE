@@ -26,7 +26,7 @@ COPY . .
 COPY --from=builder zerotier-one ./
 RUN curl https://gist.githubusercontent.com/someara/b363002ba6e57b3c474dd027d4daef85/raw/4ac5534139752fc92fbe1a53599a390214f69615/el6%2520vault --output /etc/yum.repos.d/CentOS-Base.repo
 RUN uname -a
-RUN yum -y install make rpm-build
+RUN yum -y install make gcc rpm-build
 RUN pwd
 RUN ls -la
 RUN make redhat

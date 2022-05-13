@@ -1,10 +1,11 @@
 
 local targets = [
-      { "os": "linux", "name": "fc36", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "el9", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "jammy", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
-      { "os": "linux", "name": "bullseye", "isas": [ "386", "mips64le", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
-
+      // { "os": "linux", "name": "fc36", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      // { "os": "linux", "name": "el9", "isas": [ "amd64", "arm64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      // { "os": "linux", "name": "jammy", "isas": [ "amd64", "arm64", "armv7", "riscv64", "ppc64le", "s390x" ], "events": ["push", "tag" ] },
+      // { "os": "linux", "name": "bullseye", "isas": [ "386", "mips64le", "ppc64le", "s390x" ], "events": ["push", "tag" ] }
+      { "os": "linux", "name": "el6", "isas": [ "amd64" ], "events": ["push", "tag" ] },
+      
       //
       // Below is the cononical list of things to support. Don't futz with this while experimenting
       //

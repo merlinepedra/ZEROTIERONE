@@ -103,8 +103,7 @@ cp %{getenv:PWD}/debian/zerotier-one.service $RPM_BUILD_ROOT%{_unitdir}/%{name}.
 %{_localstatedir}/*
 
 %if 0%{?rhel} && 0%{?rhel} <= 6
-cp %{getenv:PWD}/installfiles/linux/zerotier-one.init.rhel6 .
-%{_initddir}/%{name}
+cp %{getenv:PWD}/installfiles/linux/zerotier-one.init.rhel6 $RPM_BUILD_ROOT/etc/init.d/${name}
 %else
 %{_unitdir}/%{name}.service
 %endif

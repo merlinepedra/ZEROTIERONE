@@ -108,7 +108,9 @@ chmod 700 $RPM_BUILD_ROOT/etc/init.d/${name}
 %{_mandir}/*
 %{_localstatedir}/*
 
-%if ! 0%{?rhel} && 0%{?rhel} <= 6
+%if 0%{?rhel} && 0%{?rhel} <= 6
+/etc/init.d/zerotier-one
+%else
 %{_unitdir}/%{name}.service
 %endif
 

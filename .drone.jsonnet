@@ -1,6 +1,6 @@
 
 local targets = [
-      { "os": "linux", "name": "el9", "isas": [ "amd64" ], "events": [ "tag" ] },
+      { "os": "linux", "name": "el9", "isas": [ "amd64" ], "events": [ "push" ] },
 
       //
       // Render these into .drone.yaml by running "make drone"

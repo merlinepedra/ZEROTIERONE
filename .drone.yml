@@ -30,5 +30,5 @@ steps:
     - failure
 trigger:
   event:
-  - tag
+  - push
 type: docker

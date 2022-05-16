@@ -38,6 +38,40 @@ clone:
 image_pull_secrets:
 - dockerconfigjson
 kind: pipeline
+name: el9 amd64 build
+pull: always
+steps:
+- commands:
+  - ./ci/scripts/build.sh el9 amd64 100.0.0+${DRONE_COMMIT_SHA:0:8} ${DRONE_BUILD_EVENT}
+  image: registry.sean.farm/honda-builder
+  name: build
+- commands:
+  - ls -la el9
+  image: registry.sean.farm/honda-builder
+  name: list
+- environment:
+    channel:
+      from_secret: mattermost-channel
+    host:
+      from_secret: mattermost-host
+    maxRetry: 3
+    token:
+      from_secret: mattermost-token
+  image: registry.sean.farm/mattermost-notify
+  name: notify-mattermost
+  when:
+    status:
+    - failure
+trigger:
+  event:
+  - tag
+type: docker
+---
+clone:
+  depth: 1
+image_pull_secrets:
+- dockerconfigjson
+kind: pipeline
 name: el9 arm64 build
 platform:
   arch: arm64

@@ -101,6 +101,10 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
 	LIBS+=-lcurl
 endif
 
+ifeq ($(ZT_MULTITHREADED_IO),1)
+	override DEFS+=-DZT_MULTITHREADED_IO
+endif
+
 all: one
 
 ext/x64-salsa2012-asm/salsa2012.o:

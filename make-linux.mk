@@ -109,6 +109,10 @@ ifeq ($(ZT_VAULT_SUPPORT),1)
 	override LDLIBS+=-lcurl
 endif
 
+ifeq ($(ZT_MULTITHREADED_IO),1)
+	override DEFS+=-DZT_MULTITHREADED_IO
+endif
+
 # Determine system build architecture from compiler target
 CC_MACH=$(shell $(CC) -dumpmachine | cut -d '-' -f 1)
 ZT_ARCHITECTURE=999
